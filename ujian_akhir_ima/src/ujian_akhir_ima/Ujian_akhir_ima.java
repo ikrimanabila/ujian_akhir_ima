@@ -14,20 +14,19 @@ import java.util.Scanner;
 class rapor{
     int nomor_siswa,kelas;
     double nilai_mtk,nilai_bahasaindonesia,nilai_bahasainggris,nilai_ipa,nilai_ips,nilai_agama,nilai_olahraga;
-    String hasil;
     Scanner input = new Scanner(System.in);
     
     public rapor(){
         nomor_siswa=0;
         kelas=0;
-        nilai_mtk=0;
-        nilai_bahasaindonesia=0;
-        nilai_bahasainggris=0;
-        nilai_ipa=0;
-        nilai_ips=0;
-        nilai_agama=0;
-        nilai_olahraga=0;
-        hasil=" ";
+        nilai_mtk=0.0;
+        nilai_bahasaindonesia=0.0;
+        nilai_bahasainggris=0.0;
+        nilai_ipa=0.0;
+        nilai_ips=0.0;
+        nilai_agama=0.0;
+        nilai_olahraga=0.0;
+        
     }
     
     public void input(){
@@ -116,24 +115,28 @@ class rapor{
         return rata_nilai;
     }
      
-    public String hasil_pengumuman (double rata_rata){
-        String hasil = null;
-        if (rata_rata>7){
-            hasil = "naik kelas";
+    public void hasil_pengumuman (){
+        if (rata_rata()>7){
+            System.out.print ("naik kelas");
         }
-        else if (rata_rata<7){
-            hasil = "tidak naik kelas";
+        else if (rata_rata()<=7){
+            System.out.print ("tidak naik kelas");
+            
         }
-        return hasil;
+        else {
+            System.out.print("tidak tersedia");
+        }
     }
     
     public void output(){
+        
         System.out.println("=======================================");
         System.out.println("nomor siswa         : "+nomor_siswa);
         System.out.println("kelas               : "+kelas);
         System.out.println("jumlah nilai        : "+jumlah());
         System.out.println("rata-rata           : "+rata_rata());
-        System.out.println("hasil pengumuman    : "+hasil);
+        System.out.print("hasil pengumuman    : ");
+        hasil_pengumuman();
         
     }
 }
